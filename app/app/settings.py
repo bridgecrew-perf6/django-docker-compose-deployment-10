@@ -25,12 +25,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0',]
 ...
 ALLOWED_HOSTS.extend(
     filter(
         None,
-        os.environ.get('ALLOWED_HOSTS','').split(','),
+        os.environ.get('ALLOWED_HOSTS', '').split(','),
     )
 )
 
@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.environ.get('DB_HOST'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
-        'PASS': os.environ.get('DB_PASS'),
+        'PASSWORD': os.environ.get('DB_PASS'),
 
 
     }
